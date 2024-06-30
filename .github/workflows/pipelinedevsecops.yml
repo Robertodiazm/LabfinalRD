@@ -5,7 +5,7 @@ on:
      - labdevsecops
 
 jobs:
-  Prueba runner:
+  Prueba_runner:
     runs-on: windows-latest
     steps:
 
