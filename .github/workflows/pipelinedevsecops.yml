@@ -11,7 +11,7 @@ jobs:
 
     - name: Set up JDK 17
       uses: actions/setup-java@v2
-      wich:
+      with:
         java-version: '17'
         distribution: 'adopt'
 
@@ -32,4 +32,3 @@ jobs:
           echo "Se establece rama Main como rama por defecto"
           curl -X POST -u '${{ secrets.SONARCLOUD_TOKEN }}:' 'https://sonarcloud.io/api/projects_branches/rename' -d 'name=main' -d 'project=${{ github.event.repository.name }}'
         fi
-        
