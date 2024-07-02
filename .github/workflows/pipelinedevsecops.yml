@@ -80,6 +80,12 @@ jobs:
         name: Depcheck report
         path: ${{github.workspace}}/reports
 
+    - name: Upload JAR
+      uses: actions/upload-artifact@master
+      with:
+        name: Depcheck report
+        path: ${{github.workspace}}/reports
+
 #----------------------Docker build image---------------------------
   
   DockerBuild:
@@ -89,3 +95,19 @@ jobs:
 
     - name: Checkout code
       uses: actions/checkout@v2
+
+    - name: Docker login
+      uses: docker/login-action@3.0.0
+      witch:
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PASSWORD}}
+
+    - name: Download JAR
+      uses: actions/download-artifact@master
+      with:
+        name: JAR
+        path: ${{github.workplace}}
+
+    - name: Build docker
+      run: |
+        docker build --tag robertodiazm/repo-labdevsecop:latest .
