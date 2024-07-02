@@ -98,7 +98,7 @@ jobs:
 
     - name: Docker login
       uses: docker/login-action@3.0.0
-      witch:
+      with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD}}
 
