@@ -91,17 +91,17 @@ jobs:
   DockerBuild:
     needs: SCA
     runs-on: self-hosted
-    steps: 
+    steps:
 
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Docker login
+    - name: Docker Login
       uses: docker/login-action@v3.0.0
       with:
         username: ${{ secrets.DOCKER_USER }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        
+
     - name: Download JAR
       uses: actions/download-artifact@master
       with:
@@ -111,3 +111,7 @@ jobs:
     - name: Build docker
       run: |
         docker build --tag robertodiazm/repo-labdevsecop:latest .
+
+    - name: Push Docker
+      run: |
+        docker push robertodiazm/repo-labdevsecop:latest
