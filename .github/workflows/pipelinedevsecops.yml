@@ -86,7 +86,7 @@ jobs:
         name: JAR
         path: ${{github.workspace}}/build/libs/sprint-labdevsecops.jar
 
-#----------------------Docker build image---------------------------
+#----------------------Docker build image--------------------------
   
   DockerBuild:
     needs: SCA
